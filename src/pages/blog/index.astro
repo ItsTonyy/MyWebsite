@@ -1,0 +1,10 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const posts = await getCollection("blog")
+  .filter((post: CollectionEntry<"blog">) => !post.data.draft)
+  .sort(
+    (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+      b.data.date.getTime() - a.data.date.getTime(),
+  );
+---

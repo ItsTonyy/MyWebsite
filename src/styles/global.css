@@ -1,1 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+
+:root {
+  color-scheme: dark;
+  --cor-fundo: #000000;
+  --cor-texto: #ffffff;
+}
+
+.light {
+  color-scheme: light;
+  --cor-fundo: #ffffff;
+  --cor-texto: #000000;
+}
+
+@theme inline {
+  --font-display: "Inter", sans-serif;
+  --font-code: "Courier Prime", monospace;
+  --color-fundo: var(--cor-fundo);
+  --color-texto: var(--cor-texto);
+}
+
+@layer base {
+  body {
+    @apply bg-fundo text-texto font-display;
+  }
+}

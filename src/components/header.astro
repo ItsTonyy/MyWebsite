@@ -7,21 +7,82 @@ import { SITE } from "../consts";
     <div class="flex w-full max-w-3xl mx-auto justify-between items-center">
       <!-- Site Logo -->
       <div class="flex flex-row text-2xl">
-        <p class="text-blue-500 font-code">&gt;_</p>
+        <p class="text-blue-400 font-code font-bold">&gt;_</p>
         <p class="text-texto font-code">Tony</p>
       </div>
 
       <!-- Navigation -->
       <nav>
         <ul class="flex flex-row gap-4 text-sm">
-          <li><a href="/">Home</a></li>
-          <li><a href="/Blog">Blog</a></li>
-          <li><a href="/Projects">Projects</a></li>
-          <li><a href="/About">About</a></li>
+          <li><a href="/" class="text-zinc-300 hover:text-white">Home</a></li>
+          <li>
+            <a href="/Blog" class="text-zinc-300 hover:text-white">Blog</a>
+          </li>
+          <li>
+            <a href="/Projects" class="text-zinc-300 hover:text-white"
+              >Projetos</a
+            >
+          </li>
+          <li>
+            <a href="/About" class="text-zinc-300 hover:text-white">Sobre</a>
+          </li>
         </ul>
       </nav>
 
       <!-- Buttons-->
+      <div class="flex flex-row gap-2 items-center">
+        <button
+          class="rounded-full border hover:bg-zinc-700 border-zinc-600 p-2 cursor-pointer"
+        >
+          <img src="/searchSVG.svg" alt="Search" class="w-5 h-5" />
+        </button>
+
+        <button
+          id="theme-toggle"
+          class="rounded-full border hover:bg-zinc-700 border-zinc-600 p-2 cursor-pointer"
+        >
+          <img id="theme-icon" src="/sunSVG.svg" alt="Theme" class="w-5 h-5" />
+        </button>
+
+        <button
+          id="lang-toggle"
+          class="rounded-full border hover:bg-zinc-700 border-zinc-600 p-2 cursor-pointer"
+        >
+          <p
+            id="lang-text"
+            class="text-xs text-zinc-300 hover:text-white w-5 h-5 flex justify-center items-center"
+          >
+            PT
+          </p>
+        </button>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  // Theme toggle (Sun/Moon)
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon") as HTMLImageElement;
+
+  let isDarkMode = true;
+
+  themeToggle?.addEventListener("click", () => {
+    isDarkMode = !isDarkMode;
+    themeIcon.src = isDarkMode ? "/sunSVG.svg" : "/moonSVG.svg";
+    themeIcon.alt = isDarkMode ? "Sun" : "Moon";
+  });
+
+  // Language toggle (EN/PT)
+  const langToggle = document.getElementById("lang-toggle");
+  const langText = document.getElementById("lang-text");
+
+  let isEnglish = false;
+
+  langToggle?.addEventListener("click", () => {
+    isEnglish = !isEnglish;
+    if (langText) {
+      langText.textContent = isEnglish ? "EN" : "PT";
+    }
+  });
+</script>

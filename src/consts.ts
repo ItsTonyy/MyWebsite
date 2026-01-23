@@ -5,3 +5,4 @@ export const SITE: Site = {
     AUTHOR: 'Tony Terra Nova Portela',
     DESCRIPTION: 'Blog feito pelo Tony, com o intuito de compartilhar experiências e conhecimento sobre o mundo de tecnologia.'
 }
+

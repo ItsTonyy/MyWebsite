@@ -20,5 +20,5 @@ type Socials = {
 }
 
 export type { Page, Site, Links, Socials }
- 
+
 

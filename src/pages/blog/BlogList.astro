@@ -5,18 +5,44 @@ const posts = await getCollection("blog");
 const postsSorted = posts.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
+
+const months = [
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+];
 ---
 
 <>
-  <h1>Blog List</h1>
-  <ul>
+  <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {
       postsSorted.map((post) => (
-        <li>
-          <h2>{post.data.title}</h2>
-          <p>{post.data.description}</p>
-          <p>{post.data.pubDate.toLocaleDateString()}</p>
-        </li>
+        <a href={post.url}>
+          <li class="w-full h-full p-4 border border-zinc-600 rounded-lg group hover:cursor-pointer hover:bg-zinc-900">
+            <p class="mb-2 text-sm">{`${post.data.pubDate.getDate()} ${months[post.data.pubDate.getMonth()]}, ${post.data.pubDate.getFullYear()}`}</p>
+
+            <h2 class="font-bold">{post.data.title}</h2>
+            <p class="mb-2 text-sm text-zinc-300 group-hover:text-zinc-100">
+              {post.data.description}
+            </p>
+            <p>
+              {post.data.tags.map((tag) => (
+                <span class="px-2 py-1 mr-2 text-xs rounded bg-zinc-800 text-zinc-300 group-hover:text-zinc-100">
+                  {tag.toUpperCase()}
+                </span>
+              ))}
+            </p>
+          </li>
+        </a>
       ))
     }
   </ul>

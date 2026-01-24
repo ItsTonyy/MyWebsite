@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import VideoGif from "../../components/videoGif.astro";
 
 const posts = await getCollection("blog");
 const postsSorted = posts.sort(
@@ -29,7 +30,12 @@ const months = [
         <a href={post.url}>
           <li class="w-full h-full p-4 border border-zinc-600 rounded-lg group hover:cursor-pointer hover:bg-zinc-900">
             <p class="mb-2 text-sm">{`${post.data.pubDate.getDate()} ${months[post.data.pubDate.getMonth()]}, ${post.data.pubDate.getFullYear()}`}</p>
-
+            {post.data.videoPreview && (
+              <VideoGif
+                src={post.data.videoPreview}
+                class="w-full h-full rounded-lg my-2 max-h-48"
+              />
+            )}
             <h2 class="font-bold">{post.data.title}</h2>
             <p class="mb-2 text-sm text-zinc-300 group-hover:text-zinc-100">
               {post.data.description}

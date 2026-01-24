@@ -1,9 +1,10 @@
 ---
-title: "Meu Primeiro Post"
-description: "Este é um post de teste para verificar que o blog está funcionando"
+title: "Quarto Post"
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla pulvinar erat eget ultrices."
 pubDate: 2026-01-20
 heroImage: "/blog-placeholder.jpg"
 tags: ["teste", "astro"]
+videoPreview: "/videos/04/video.webm"
 ---
 
 # Bem-vindo ao meu blog!

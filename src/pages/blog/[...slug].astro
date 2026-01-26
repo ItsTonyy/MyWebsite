@@ -1,6 +1,11 @@
 ---
 import { getCollection, render } from "astro:content";
-import type { InferGetStaticPropsType } from "astro";
+import type { CollectionEntry } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -14,17 +19,15 @@ export async function getStaticPaths() {
   }));
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
 const { post } = Astro.props as Props;
 const { Content } = await render(post);
 ---
 
-<article>
+<PageLayout <article>
   <h1>{post.data.title}</h1>
   <p>{post.data.description}</p>
   <p>{post.data.pubDate.toLocaleDateString()}</p>
   <div>
     <Content />
   </div>
-</article>
+</PageLayout>

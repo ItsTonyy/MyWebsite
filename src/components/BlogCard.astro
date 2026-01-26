@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import VideoGif from "./videoGif.astro";
+
+interface Props {
+  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+}
+
+const months = [
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+];
+
+const { entry } = Astro.props;
+---
+
+<li
+  class="w-full h-full p-4 border border-zinc-600 rounded-lg group hover:cursor-pointer hover:bg-zinc-900"
+>
+  <p class="mb-2 text-sm">
+    {
+      `${entry.data.pubDate.getDate()} ${months[entry.data.pubDate.getMonth()]}, ${entry.data.pubDate.getFullYear()}`
+    }
+  </p>
+  {
+    entry.data.videoPreview && (
+      <VideoGif
+        src={entry.data.videoPreview}
+        class="w-full h-full rounded-lg my-2 max-h-48"
+      />
+    )
+  }
+  <h2 class="font-bold">{entry.data.title}</h2>
+  <p class="mb-2 text-sm text-zinc-300 group-hover:text-zinc-100">
+    {entry.data.description}
+  </p>
+  <p>
+    {
+      entry.data.tags.map((tag: string) => (
+        <span class="px-2 py-1 mr-2 text-xs rounded bg-zinc-800 text-zinc-300 group-hover:text-zinc-100">
+          {tag.toUpperCase()}
+        </span>
+      ))
+    }
+  </p>
+</li>

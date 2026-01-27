@@ -1,6 +1,8 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import BlogList from "./blog/BlogList.astro";
+import { Image } from "astro:assets";
+import HeroImage from "../assets/Creation-of-adam-4k.png";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -8,13 +10,23 @@ import BlogList from "./blog/BlogList.astro";
 
 <PageLayout>
   <div class="w-full max-w-3xl mx-auto">
+    <!-- Hero Section -->
+    <section>
+      <Image
+        src={HeroImage}
+        alt="Hero Image"
+        loading="eager"
+        quality={100}
+        class="w-full h-full rounded-lg my-2"
+      />
+    </section>
+
     <div class="flex flex-row justify-between items-center mb-4">
       <h1 class="text-lg font-bold">Posts Recentes</h1>
       <p class="text-sm text-zinc-400 hover:text-zinc-200 cursor-pointer">
         Ver Todos
       </p>
     </div>
-
     <BlogList />
   </div>
 </PageLayout>

@@ -23,11 +23,13 @@ const { post } = Astro.props as Props;
 const { Content } = await render(post);
 ---
 
-<PageLayout <article>
-  <h1>{post.data.title}</h1>
-  <p>{post.data.description}</p>
-  <p>{post.data.pubDate.toLocaleDateString()}</p>
-  <div>
-    <Content />
-  </div>
+<PageLayout>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p>{post.data.description}</p>
+    <p>{post.data.pubDate.toLocaleDateString()}</p>
+    <div>
+      <Content />
+    </div>
+  </article>
 </PageLayout>

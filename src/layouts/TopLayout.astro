@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Calendar, Eye, ArrowLeft } from "lucide-react";
+import readingTime from "reading-time";
+import months from "../utils/months";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+interface Stats {
+  text: string;
+  minutes: number;
+  time: number;
+  words: number;
+}
+
+const { post } = Astro.props;
+
+const stats: Stats = readingTime(post.body ?? "");
+
+const minutes = stats.minutes < 1 ? "<1" : stats.minutes;
+---
+
+<>
+  <div class="max-w-3xl mx-auto py-4">
+    <a href="/">
+      <button
+        class="p-2 mb-8 text-sm rounded-lg bg-black text-zinc-300 hover:text-white hover:bg-zinc-800 border border-zinc-600
+       cursor-pointer flex flex-row items-center gap-2"
+      >
+        <ArrowLeft size={16} /> Voltar
+      </button>
+    </a>
+
+    <div>
+      <div class="flex flex-row gap-2 mb-2">
+        <div class="flex flex-row gap-1 items-center text-sm text-zinc-400">
+          <Calendar size={16} />
+          {
+            `${post.data.pubDate.getDate()} ${months[post.data.pubDate.getMonth()]}, ${post.data.pubDate.getFullYear()}`
+          }
+        </div>
+        <div class="flex flex-row gap-1 items-center text-sm text-zinc-400">
+          <Eye size={16} />
+          <p>{minutes} {minutes === "<1" ? " minuto" : " minutos"}</p>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-2xl font-bold mb-1">{post.data.title}</h1>
+        <p class="text-sm text-zinc-400">{post.data.description}</p>
+      </div>
+    </div>
+  </div>
+</>

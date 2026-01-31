@@ -2,6 +2,8 @@
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
+import TopLayout from "../../layouts/TopLayout.astro";
+import VideoGif from "../../components/videoGif.astro";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -24,11 +26,14 @@ const { Content } = await render(post);
 ---
 
 <PageLayout>
-  <article>
-    <h1>{post.data.title}</h1>
-    <p>{post.data.description}</p>
-    <p>{post.data.pubDate.toLocaleDateString()}</p>
-    <div>
+  <TopLayout post={post} />
+  <article
+    class="w-full h-full max-w-3xl mx-auto flex flex-col justify-center items-center"
+  >
+    <div class="w-full h-full text-zinc-200">
+      <!--
+        <VideoGif src={post.data.videoPreview} class="w-full h-80" />
+      -->
       <Content />
     </div>
   </article>

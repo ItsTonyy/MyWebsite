@@ -14,11 +14,25 @@ import "../styles/global.css";
     <title>{SITE.NAME}</title>
   </head>
   <body class="bg-fundo text-texto">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <div class="page-wrapper">
+      <!-- Linhas verticais (laterais) -->
+      <div class="grid-line-vertical grid-line-left"></div>
+      <div class="grid-line-vertical grid-line-right"></div>
+
+      <Header />
+
+      <!-- Linha horizontal após header -->
+      <div class="grid-line-horizontal"></div>
+
+      <main>
+        <slot />
+      </main>
+
+      <!-- Linha horizontal antes do footer -->
+      <div class="grid-line-horizontal"></div>
+
+      <Footer />
+    </div>
   </body>
 </html>
 
@@ -27,6 +41,37 @@ import "../styles/global.css";
   body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+  }
+
+  .page-wrapper {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Linhas verticais (laterais) - acompanham todo o documento */
+  .grid-line-vertical {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(150, 150, 150, 0.267);
+    pointer-events: none;
+  }
+
+  .grid-line-left {
+    left: clamp(16px, 5vw, 80px);
+  }
+
+  .grid-line-right {
+    right: clamp(16px, 5vw, 80px);
+  }
+
+  /* Linhas horizontais - separadores entre seções */
+  .grid-line-horizontal {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(150, 150, 150, 0.267);
+    pointer-events: none;
   }
 </style>

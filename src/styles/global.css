@@ -8,6 +8,7 @@
   color-scheme: dark;
   --cor-fundo: #000000;
   --cor-texto: #ffffff;
+  --cor-texto-artigo: #babac1;
 }
 
 .light {
@@ -21,6 +22,7 @@
   --font-code: "Courier Prime", monospace;
   --color-fundo: var(--cor-fundo);
   --color-texto: var(--cor-texto);
+  --color-texto-artigo: var(--cor-texto-artigo);
 
   /* Animação Hero */
   --animate-fade-slide-up: fade-slide-up 1.2s cubic-bezier(0.16, 1, 0.3, 1)

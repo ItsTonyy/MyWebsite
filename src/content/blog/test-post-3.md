@@ -5,6 +5,7 @@ pubDate: 2026-01-20
 heroImage: "/blog-placeholder.jpg"
 tags: ["teste", "astro"]
 videoPreview: "/videos/03/video.webm"
+videoType: "video/webm"
 ---
 
 # Bem-vindo ao meu blog!

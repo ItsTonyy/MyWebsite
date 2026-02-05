@@ -13,65 +13,51 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{SITE.NAME}</title>
   </head>
-  <body class="bg-fundo text-texto">
-    <div class="page-wrapper">
+  <body class="bg-fundo text-texto m-0 w-full min-h-full">
+    <div class="relative min-h-screen">
       <!-- Linhas verticais (laterais) -->
-      <div class="grid-line-vertical grid-line-left"></div>
-      <div class="grid-line-vertical grid-line-right"></div>
+      <div
+        class="absolute top-0 bottom-0 w-px bg-gray-400/25 pointer-events-none left-[clamp(16px,5vw,80px)]"
+      >
+      </div>
+      <div
+        class="absolute top-0 bottom-0 w-px bg-gray-400/25 pointer-events-none right-[clamp(16px,5vw,80px)]"
+      >
+      </div>
 
       <Header />
 
-      <!-- Linha horizontal após header -->
-      <div class="grid-line-horizontal"></div>
+      <!-- Linha horizontal após header com estrelas -->
+      <div class="relative w-full flex items-center">
+        <span
+          class="absolute text-[1.2rem] text-gray-400/50 pointer-events-none top-0 leading-0 -translate-x-1/2 -translate-y-1/2 left-[clamp(16px,5vw,80px)]"
+          >✦</span
+        >
+        <div class="flex-1 h-px bg-gray-400/25 pointer-events-none"></div>
+        <span
+          class="absolute text-[1.2rem] text-gray-400/50 pointer-events-none top-0 leading-0 -translate-x-1/2 -translate-y-1/2 left-[calc(100%-clamp(16px,5vw,80px))]"
+          >✦</span
+        >
+      </div>
 
       <main>
         <slot />
       </main>
 
-      <!-- Linha horizontal antes do footer -->
-      <div class="grid-line-horizontal"></div>
+      <!-- Linha horizontal antes do footer com estrelas -->
+      <div class="relative w-full flex items-center">
+        <span
+          class="absolute text-[1.2rem] text-gray-400/50 pointer-events-none top-0 leading-0 -translate-x-1/2 -translate-y-1/2 left-[clamp(16px,5vw,80px)]"
+          >✦</span
+        >
+        <div class="flex-1 h-px bg-gray-400/25 pointer-events-none"></div>
+        <span
+          class="absolute text-[1.2rem] text-gray-400/50 pointer-events-none top-0 leading-0 -translate-x-1/2 -translate-y-1/2 left-[calc(100%-clamp(16px,5vw,80px))]"
+          >✦</span
+        >
+      </div>
 
       <Footer />
     </div>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-  }
-
-  .page-wrapper {
-    position: relative;
-    min-height: 100vh;
-  }
-
-  /* Linhas verticais (laterais) - acompanham todo o documento */
-  .grid-line-vertical {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: rgba(150, 150, 150, 0.267);
-    pointer-events: none;
-  }
-
-  .grid-line-left {
-    left: clamp(16px, 5vw, 80px);
-  }
-
-  .grid-line-right {
-    right: clamp(16px, 5vw, 80px);
-  }
-
-  /* Linhas horizontais - separadores entre seções */
-  .grid-line-horizontal {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(150, 150, 150, 0.267);
-    pointer-events: none;
-  }
-</style>

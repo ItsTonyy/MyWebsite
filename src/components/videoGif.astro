@@ -8,7 +8,7 @@ const { src, class: className = "" } = Astro.props;
 ---
 
 <video class={className} autoplay loop muted playsinline>
-  <source src={src} type="video/webm" />
+  <source src={src} />
 </video>
 
 <style>

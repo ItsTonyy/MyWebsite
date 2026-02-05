@@ -4,7 +4,8 @@ description: "Este é um post de teste para verificar que o blog está funcionan
 pubDate: 2026-01-20
 heroImage: "/blog-placeholder.jpg"
 tags: ["teste", "astro"]
-videoPreview: "/videos/01/RubikCube.webm"
+videoPreview: "/videos/01/RubikCube.mp4"
+videoType: "video/mp4"
 ---
 
 # Bem-vindo ao meu blog!

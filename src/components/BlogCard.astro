@@ -1,25 +1,11 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import VideoGif from "./videoGif.astro";
+import months from "../utils/months";
 
 interface Props {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
 }
-
-const months = [
-  "Jan",
-  "Fev",
-  "Mar",
-  "Abr",
-  "Mai",
-  "Jun",
-  "Jul",
-  "Ago",
-  "Set",
-  "Out",
-  "Nov",
-  "Dez",
-];
 
 const { entry } = Astro.props;
 ---
@@ -36,6 +22,7 @@ const { entry } = Astro.props;
     entry.data.videoPreview && (
       <VideoGif
         src={entry.data.videoPreview}
+        videoType={entry.data.videoType}
         class="w-full h-full rounded-lg my-2 max-h-48"
       />
     )

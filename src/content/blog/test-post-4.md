@@ -4,7 +4,8 @@ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent 
 pubDate: 2026-01-20
 heroImage: "/blog-placeholder.jpg"
 tags: ["teste", "astro"]
-videoPreview: "/videos/04/video.webm"
+videoPreview: "/videos/04/video.mp4"
+videoType: "video/mp4"
 ---
 
 # Bem-vindo ao meu blog!
